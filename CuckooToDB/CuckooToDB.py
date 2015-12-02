@@ -1,8 +1,8 @@
 #----------------------------------------------------
-#Êı¾İ¿âÁ¬½ÓÔÚ255ĞĞ£¬×¢Òâ¶Ë¿Ú²»ÒªÓÃÒıºÅÒòÆğÀ´
-#linuxÏÂÅÜ¿ÉÄÜ»áÓöµ½±àÂëÎÊÌâ£¬ÇëÈ¥µôÎÒµÄÖĞÎÄ×¢ÊÍ
-#×Ô¾õĞ´³ÌĞòµÄ¾­Ñé²»×ã
-#ÓĞ´íÎó»ò¿ÉÓÅ»¯µÄµØ·½Ï£Íû´ó¼Ò²»Áß´Í½Ì
+#æ•°æ®åº“è¿æ¥åœ¨255è¡Œï¼Œæ³¨æ„ç«¯å£ä¸è¦ç”¨å¼•å·å› èµ·æ¥
+#linuxä¸‹è·‘å¯èƒ½ä¼šé‡åˆ°ç¼–ç é—®é¢˜ï¼Œè¯·å»æ‰æˆ‘çš„ä¸­æ–‡æ³¨é‡Š
+#è‡ªè§‰å†™ç¨‹åºçš„ç»éªŒä¸è¶³
+#æœ‰é”™è¯¯æˆ–å¯ä¼˜åŒ–çš„åœ°æ–¹å¸Œæœ›å¤§å®¶ä¸åèµæ•™
 #_author_ = Vi
 #https://github.com/Viwilla
 #http://www.cnblogs.com/Viwilla/
@@ -20,9 +20,9 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 #-------------------------------------------------------------
-#Èç¹ûÒª½âÎöhttpĞ­Òé,¿ÉÒÔµ¼Èëhtpp°üÊµÏÖ
-#linuxµ¼ÈëhttpÊ§°Ü£¬Òò´Ë×¢ÊÍµôÕâÒ»¶Î,Ö±½ÓÌáÈ¡Õû¸öhttpÄÚÈİ
-#ºóÃæ±£ÁôÁË½âÎöhttpµÄ´úÂë
+#å¦‚æœè¦è§£æhttpåè®®,å¯ä»¥å¯¼å…¥htppåŒ…å®ç°
+#linuxå¯¼å…¥httpå¤±è´¥ï¼Œå› æ­¤æ³¨é‡Šæ‰è¿™ä¸€æ®µ,ç›´æ¥æå–æ•´ä¸ªhttpå†…å®¹
+#åé¢ä¿ç•™äº†è§£æhttpçš„ä»£ç 
 #--------------------------------------------------------------
 #try:
     # This import works from the project directory
@@ -59,7 +59,7 @@ def ConnectDB(h, u ,pa,d,p):
     except :
         print "use DB failed"
 #------------------------------------------------
-#Ñ°ÕÒ×î´óµÄID,ÏÂÒ»´Î²åÈëÊı¾İ´Ó¸ÃIDÖ®ºó²åÈë
+#å¯»æ‰¾æœ€å¤§çš„ID,ä¸‹ä¸€æ¬¡æ’å…¥æ•°æ®ä»è¯¥IDä¹‹åæ’å…¥
 #Find the max ID in DataBase
 #------------------------------------------------
 def SelectID():
@@ -69,8 +69,8 @@ def SelectID():
     ID = cur.fetchall()
     return ID[0][0]
 #------------------------------------------------
-#Í³¼ÆMD5
-#ÈôÊı¾İ¿âÖĞÒÑÓĞ¸ÃMD5¼ì²âĞÅÏ¢ÔòÌø¹ı
+#ç»Ÿè®¡MD5
+#è‹¥æ•°æ®åº“ä¸­å·²æœ‰è¯¥MD5æ£€æµ‹ä¿¡æ¯åˆ™è·³è¿‡
 #------------------------------------------------
 def CountMD5():
     query = "SELECT  SampleMD5 FROM samplesinfo3"
@@ -82,8 +82,8 @@ def CountMD5():
 	    totalMD5.append(data[0])
 	    
 #------------------------------------------------
-#½âÎöcuckooÉú³ÉµÄ¡°report.json¡±ÎÄ¼ş
-#ÌáÈ¡ÎÒÃÇĞèÒªµÄ×Ö¶Î
+#è§£æcuckooç”Ÿæˆçš„â€œreport.jsonâ€æ–‡ä»¶
+#æå–æˆ‘ä»¬éœ€è¦çš„å­—æ®µ
 #------------------------------------------------
 def ReadJSON(file):
     global ID
@@ -150,13 +150,13 @@ def ReadJSON(file):
     return str1
 
 #----------------------------------------------
-#½âÎöcuckooÉú³ÉµÄPcap°ü
-#ÌáÈ¡ÎÒÃÇĞèÒªµÄĞÅÏ¢
+#è§£æcuckooç”Ÿæˆçš„PcapåŒ…
+#æå–æˆ‘ä»¬éœ€è¦çš„ä¿¡æ¯
 #----------------------------------------------
 def ReadPcap(file,str0,str1):
     packets = scapy.rdpcap(file)
     for p in packets:
-	#ÏÔÊ¾scapy½âÎöÄÚÈİ,µ÷ÊÔÓÃ
+	#æ˜¾ç¤ºscapyè§£æå†…å®¹,è°ƒè¯•ç”¨
         #print '=' * 78
         #p.show()
 	strID = "('%d',"%ID
@@ -166,7 +166,7 @@ def ReadPcap(file,str0,str1):
         if p.payload.name == 'ARP':
             continue
         if p.payload.name == 'IP':
-	    #±£´æIP
+	    #ä¿å­˜IP
             if p.payload.src == '192.168.229.111':
                 dst ="dst_%s:%d"%(p.payload.dst, p.payload.payload.dport)
                 _IP = dst
@@ -174,27 +174,27 @@ def ReadPcap(file,str0,str1):
                 src ="src_%s:%d"%(p.payload.src, p.payload.payload.sport)
                 _IP = src
                 
-            # ½âÎöTCPĞ­Òé     
+            # è§£æTCPåè®®     
             if p.payload.proto == 6:       
-                #ÌáÈ¡Ê®Áù½øÖÆÁ÷Á¿Êı¾İ
+                #æå–åå…­è¿›åˆ¶æµé‡æ•°æ®
                 if  p.payload.payload.payload.name == 'Raw':
                     load = str(binascii.b2a_hex(p.load))
                     _flow = load
                 if  p.payload.payload.payload.name == 'HTTP':
                     if p.payload.payload.payload.payload.name == 'HTTP Response':
-			#ÈôÒªÌáÈ¡asciiÊı¾İ¿ÉÖ±½ÓÓÃp.payload
+			#è‹¥è¦æå–asciiæ•°æ®å¯ç›´æ¥ç”¨p.payload
                         #ascii = p.load
                         #if ascii not in asciidata:
                             #asciidata.append(ascii) 
                         load = str(binascii.b2a_hex(p.load))
                         _flow = load
                             
-            #½âÎöUDP
+            #è§£æUDP
             elif p.payload.proto == 17:
                 if  p.payload.payload.payload.name== 'Raw':
                     load = str(binascii.b2a_hex(p.load))
                     _flow = load   
-		#±£´æDNS
+		#ä¿å­˜DNS
                 if p.payload.payload.payload.name == 'DNS':
                     dns = p.payload.payload.payload.qd.qname
                     _dns = dns    
@@ -207,7 +207,7 @@ def ReadPcap(file,str0,str1):
             print "No rule for %s"%p.payload.name
             continue
         
-        #--------²åÈëĞÅÏ¢È¥ÖØ---------
+        #--------æ’å…¥ä¿¡æ¯å»é‡---------
         strc = _MD5 + _dns + _IP + _flow 
         if strc not in strtotal:
             strtotal.append(strc)
@@ -217,8 +217,8 @@ def ReadPcap(file,str0,str1):
 	    global flag
 	    flag = 1 
 	    continue
-    #flag=1  £º ±êÖ¾¸ÃÑù±¾ÓĞÁ÷Á¿ĞÅÏ¢
-    #flag = 0£º±êÖ¾¸ÃÑù±¾ÎŞÁ÷Á¿ĞÅÏ¢
+    #flag=1  ï¼š æ ‡å¿—è¯¥æ ·æœ¬æœ‰æµé‡ä¿¡æ¯
+    #flag = 0ï¼šæ ‡å¿—è¯¥æ ·æœ¬æ— æµé‡ä¿¡æ¯
     if flag == 0:
 	strID = "('%d',"%ID
 	str2 = "'%s','%s','%s');"%('','','')
@@ -228,7 +228,7 @@ def ReadPcap(file,str0,str1):
     return 
 
 #------------------------------------------------
-#SQL²Ù×÷
+#SQLæ“ä½œ
 #------------------------------------------------
 def ToDB(_str):
     #try:
@@ -246,13 +246,13 @@ def ToDB(_str):
 #------------------------------------------------
 def main():
     rootdir = '/root/cuckoo/storage/analyses/'
-    #n=Ñù±¾¸öÊı+1
+    #n=æ ·æœ¬ä¸ªæ•°+1
     n = len(os.listdir(rootdir))
     Js = "reports/report.json"
     pcap = 'dump.pcap'
     if not os.path.exists("pcap"):
 	os.mkdir("pcap")
-    ConnectDB('ip', 'username', 'password', 'database', 'port')#¶Ë¿ÚÈ¥µôÒıºÅ£¡£¡
+    ConnectDB('ip', 'username', 'password', 'database', port)#ç«¯å£å»æ‰å¼•å·ï¼ï¼
     global ID
     try:
         ID = SelectID() + 1
