@@ -2,27 +2,31 @@
 批量提取cuckoo检测信息到数据库
 # CukooToMySQL
     开发环境:python2.7 + scapy + cuckooCentOS
-    程序功能:批量提取cuckoo检测信息到数据库
-    DB TABBLE:
-    CREATE TABLE `samplesinfo` (
-      `ID` int(11) NOT NULL,
-      `SampleSHA1` varchar(40) NOT NULL,
-      `SampleMD5` varchar(32) DEFAULT NULL,
-      `SampleType` text,
-      `SamplePacker` text,
-      `360AV` text,
-      `Avira` text,
-      `ClamAV` text,
-      `Eset` text,
-      `F_Secure` text,
-      `Kaspersky` text,
-      `Symantec` text,
-      `Yara` text,
-      `DNS_IP` text,
-      `IP_Port` text,
-      `Flow` text,
-      PRIMARY KEY (`ID`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    程序功能:批量提取cuckoo检测信息到MySQL数据库，包括：
+        1.解析cuckoo json报告文件，提取样本信息
+        2.解析样本pcap包，提取流量特征
+        3.不增加已检测过的样本信息
+        4.保存pcap包到./pcap/目录
+    Table:
+        CREATE TABLE `samplesinfo` (
+          `ID` int(11) NOT NULL,
+          `SampleSHA1` varchar(40) NOT NULL,
+          `SampleMD5` varchar(32) DEFAULT NULL,
+          `SampleType` text,
+          `SamplePacker` text,
+          `360AV` text,
+          `Avira` text,
+          `ClamAV` text,
+          `Eset` text,
+          `F_Secure` text,
+          `Kaspersky` text,
+          `Symantec` text,
+          `Yara` text,
+          `DNS_IP` text,
+          `IP_Port` text,
+          `Flow` text,
+          PRIMARY KEY (`ID`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
